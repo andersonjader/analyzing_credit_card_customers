@@ -39,3 +39,7 @@ def calc_qtde_outliers(dataframe, col):
   t_a = d_alto[col].count()
   t_b = d_baixo[col].count()
   return t_a, t_b
+
+def make_boxplot(df,col, caminho):
+  sns.boxplot(data=df[col], orient='h',color="#bdd1de", medianprops={"color": "#f0a818"}).set_title(col)
+  #plt.savefig(caminho,dpi = 300)
