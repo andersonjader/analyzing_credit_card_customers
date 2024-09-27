@@ -10,23 +10,23 @@ import seaborn as sns
 
 def norm_Data(df,col):
   """
-  função que normaliza os dados e retorna um dataframe
-  parametros: df: dataframe, col: colunas selecionadas
+  function that normalizes the data and returns a dataframe
+  parameters: df: dataframe, col: selected columns
   """
-  df_norm = StandardScaler().fit_transform(df)
+  df_norm = StandardScaler().fit_transform(df[col])
   df2 = pd.DataFrame(data=df_norm, columns=col)
   return df2
 
-def correlacao(df):
+def correlation(df):
   df2 = df.corr().style.background_gradient(cmap='Blues')
   return df2
 
-def correlacao_map(df, caminho):
+def correlation_map(df, path_save):
   fig, ax = plt.subplots(figsize=(12,8))
   sns.heatmap(df.corr(), cmap='Blues', linewidths= 0.5, annot=True)
-  #plt.savefig(caminho,dpi = 300)
+  #plt.savefig(path_save,dpi = 300)
 
-def calc_qtde_outliers(dataframe, col):
+def calc_outliers(dataframe, col):
   q1 = dataframe[col].quantile(0.25)
   q3 = dataframe[col].quantile(0.75)
   FIQ = q3 - q1
