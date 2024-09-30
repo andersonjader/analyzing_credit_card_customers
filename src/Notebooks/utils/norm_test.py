@@ -18,10 +18,20 @@ def calcShapiro(data):
 def cal_Anderson_Darling(data,a):
     p = anderson(data).statistic
     if p < a:
-        r = 'rejects the null hypothesis'
+        r = 'non-standard distribution'
         return r
     else:
-        r = 'fails to reject the null hypothesis'
+        r = 'standard distribution'
+        return r
+
+def dagostinho(data,a):
+
+    _, p = stats.normaltest(data)
+    if p < a:
+        r = 'non-standard distribution'
+        return r
+    else:
+        r = 'standard distribution'
         return r
 
 def distribuitionGaus(data, name):
