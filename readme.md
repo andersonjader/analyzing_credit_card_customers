@@ -9,4 +9,4 @@ A manager at the bank is disturbed with more and more customers leaving their cr
 
 # Materials and Methods
 
-Docker image: docker pull andersonbrizola/machinelearninggeral:1.0
+Docker image: docker pull andersonbrizola/machinelearninggeral:1.1

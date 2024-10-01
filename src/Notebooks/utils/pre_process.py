@@ -4,6 +4,8 @@ import pandas as pd
 from sklearn.decomposition import PCA
 from sklearn import preprocessing
 from sklearn.preprocessing import StandardScaler
+from imblearn.under_sampling import RandomUnderSampler
+
 
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -43,3 +45,15 @@ def calc_outliers(dataframe, col):
 def make_boxplot(df,col, caminho):
   sns.boxplot(data=df[col], orient='h',color="#bdd1de", medianprops={"color": "#f0a818"}).set_title(col)
   #plt.savefig(caminho,dpi = 300)
+
+def balances_categories(X, y):
+  """
+  método que faz uma subamostragem aleatoria de uma população
+  com o objetivo de balancear as classes, método é usado apenas para o caso de classes binarias
+
+  recebe como paramentro X: dataframe
+  y variavel categorica
+  """
+  rus = RandomUnderSampler(random_state=0)
+  X_resampled, y_resampled = rus.fit_resample(X, y)
+  return X_resampled, y_resampled 
